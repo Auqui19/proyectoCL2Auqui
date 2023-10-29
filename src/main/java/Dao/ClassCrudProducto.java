@@ -44,14 +44,15 @@ public class ClassCrudProducto implements Iproductoable {
 
 	@Override
 	public List<TblProductocl2> ListadoProducto() {
-		EntityManagerFactory conex=Persistence.createEntityManagerFactory("LPII_CL2_AUQUITASAYCOSEBASTIAN");
-		EntityManager emanager=conex.createEntityManager();
-		emanager.getTransaction().begin();
-		List<TblProductocl2> listado = emanager.createQuery("select e from TBL_PRODUCTOCL2 e",TblProductocl2.class).getResultList();
-		emanager.getTransaction().commit();
-		emanager.close();
-		return listado;
+	    EntityManagerFactory conex = Persistence.createEntityManagerFactory("LPII_CL2_AUQUITASAYCOSEBASTIAN");
+	    EntityManager emanager = conex.createEntityManager();
+	    emanager.getTransaction().begin();
+	    List<TblProductocl2> listado = emanager.createQuery("SELECT t FROM TblProductocl2 t", TblProductocl2.class).getResultList();
+	    emanager.getTransaction().commit();
+	    emanager.close();
+	    return listado;
 	}
+
 
 	@Override
 	public TblProductocl2 BuscarProductoCodigo(TblProductocl2 tblpro) {

@@ -1,3 +1,5 @@
+<%@page import="java.util.*" %>
+<%@page import="model.TblProductocl2" %>
 <html>
 <body>
 <h2>Registrar Producto</h2>
@@ -8,11 +10,11 @@
 			<td><input type="text" name="nombre"></td>
 		</tr>
 		<tr>
-			<td>Precio</td>
+			<td>Precio Venta</td>
 			<td><input type="number" name="precioven"></td>
 		</tr>
 		<tr>
-			<td>PrecioVen</td>
+			<td>Precio Compra</td>
 			<td><input type="number" name="preciocom"></td>
 		</tr>
 		<tr>
@@ -35,5 +37,33 @@
 		</tr>
 	</table>
 </form>
+<h2>Lista</h2>
+<table>
+	<tr>
+		<th>Codigo</th>
+		<th>Nombre</th>
+		<th>Precio Venta</th>
+		<th>Precio Compra</th>
+		<th>Estado</th>
+		<th>Descripcion</th>
+	</tr>
+	<%
+		List<TblProductocl2> listado = (List<TblProductocl2>)request.getAttribute("listado");
+		if(listado!=null){
+			for(TblProductocl2 tblpro:listado){
+	%>
+		<tr>
+			<td><%=tblpro.getIdproductocl2()%></td>	
+			<td><%=tblpro.getNombrecl2()%></td>	
+			<td><%=tblpro.getPrecioventacl2()%></td>	
+			<td><%=tblpro.getPreciocompcl2()%></td>	
+			<td><%=tblpro.getEstadocl2()%></td>	
+			<td><%=tblpro.getDescripcl2()%></td>	
+		</tr>		
+	<% 				
+			}
+		}
+	%>
+</table>
 </body>
 </html>
